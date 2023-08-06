@@ -166,8 +166,70 @@ public class BSTBuild{
 
         return flagLeft && flagRight;
     }
+
+    //[SORTED ARRAY to BALANCED BST]
+    public static Node arrayToBST(int[] arr, int l, int r){
+        if(l > r){
+            return null;
+        }
+
+        int mid = l - (l-r)/2;
+
+        Node root = new Node(arr[mid]);
+
+        root.left = arrayToBST(arr, l, mid - 1);
+        root.right = arrayToBST(arr, mid + 1, r);
+
+        return root;
+    }
     
+    public static void preorder(Node root){
+        if(root == null){
+            return;
+        }
+
+        System.out.print(root.data + " ");
+        preorder(root.left);
+        preorder(root.right);
+    }
+
+    //[NORMAL BST to BALANCED BST]
+    public static void getInorder(Node root, ArrayList<Integer> inorder){
+        if(root == null){
+            return;
+        }
+
+        getInorder(root.left, inorder);
+        inorder.add(root.data);
+        getInorder(root.right, inorder);
+    }
+
+    public static Node normalBSTtoBalanced(Node root){
+        ArrayList<Integer> inorder =  new ArrayList<>();
+
+        getInorder(root, inorder);
+
+
+        return arrayToBST(inorder, 0, inorder.size() - 1);
+
+    }
+
+    public static Node arrayToBST(ArrayList<Integer> arr, int l, int r){
+        if(l > r){
+            return null;
+        }
+
+        int mid = l - (l-r)/2;
+
+        Node root = new Node(arr.get(mid));
+
+        root.left = arrayToBST(arr, l, mid - 1);
+        root.right = arrayToBST(arr, mid + 1, r);
+
+        return root;
+    }
     public static void main(String[] args) {
+
         int values[] = {8,5,3,6,10,11,14};
         Node root = new Node(values[0]);
 
@@ -175,9 +237,12 @@ public class BSTBuild{
            root =  insert(root, values[i]);
         }
 
-        inorder(root);
+        // preorder(normalBSTtoBalanced(root));
 
-        System.out.println();
+
+        // inorder(root);
+
+        // System.out.println();
 
         // delete(root, 5);
 
@@ -193,12 +258,19 @@ public class BSTBuild{
 
         // rootToLeaf(root);
 
-        if(isValidBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE)){
-            System.out.println("VALID");
-        }else{
-            System.out.println("NOT VALID");
-        }
+        // if(isValidBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE)){
+        //     System.out.println("VALID");
+        // }else{
+        //     System.out.println("NOT VALID");
+        // }
 
+
+    //     int[] arr = {-10,-3,0,5,9};
+
+    //    Node root = arrayToBST(arr, 0, arr.length - 1);
+
+    //    //    inorder(root);
+    //    preorder(root);
 
     }
 }
