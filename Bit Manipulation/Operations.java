@@ -58,11 +58,11 @@ public class Operations {
         int n = sc.nextInt();
         int i = sc.nextInt();
 
-        // getBit(n, i);
+        getBit(n, i);
         // System.out.println(setBit(n, i));
         // System.out.println(clearBit(n, i));
         // System.out.println(updateBit(n, i, 1));
         // System.out.println(clear_i_bits(n, i));
-        System.out.println(clearBitRange(n, i, sc.nextInt()));
+        // System.out.println(clearBitRange(n, i, sc.nextInt()));
     }
 }
