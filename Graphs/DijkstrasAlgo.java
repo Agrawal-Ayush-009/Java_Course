@@ -48,7 +48,7 @@ public class DijkstrasAlgo {
         }
     }
 
-    public static void dijstars(ArrayList<Edge>[] graph, int src){
+    public static void dijstars(ArrayList<Edge>[] graph, int src){//O(nlogn)
         int dist[] = new int[graph.length];
 
         for(int i = 0; i < dist.length; i++){
@@ -67,7 +67,7 @@ public class DijkstrasAlgo {
                 vis[curr.n] = true;
 
                 for(int i = 0; i < graph[curr.n].size(); i++){
-                    Edge e = graph[curr.n].get(i);
+                    Edge e = graph[curr.n].get(i); 
                     int u = e.src;
                     int v = e.dest;
                     int wt = e.wt;

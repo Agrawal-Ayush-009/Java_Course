@@ -10,6 +10,8 @@ public class HashSets {
         set.add(1);
         set.add(9);
 
+        System.out.println(set.contains(8));
+
         Iterator itr = set.iterator();
 
         while(itr.hasNext()){
