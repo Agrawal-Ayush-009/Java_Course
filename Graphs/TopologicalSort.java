@@ -39,8 +39,6 @@ public class TopologicalSort {
             }
         }
 
-        int i = 0;
-
         while(!stack.empty()){
             System.out.print(stack.pop() + " ");
         }
